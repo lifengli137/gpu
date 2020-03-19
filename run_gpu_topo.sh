@@ -1,5 +1,5 @@
 #!/bin/bash
-nvidia-smi topo -p2p n | grep OK | head -n 8 | awk '{$1=""; print $0}' | sed 's/ //' | tee /tmp/topo
+nvidia-smi topo -p2p n | grep OK | head -n 8 | awk '{$1=""; print $0}' | sed 's/ //' > /tmp/topo
 
 g++ -o gpu_topo ./gpu/gpu_topo.cpp
 order=$(./gpu_topo /tmp/topo)
